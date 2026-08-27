@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAFERA | The Digital Future</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #080a12;
+      color: white;
+    }
+
+    /* NAVBAR */
+    header {
+      height: 80px;
+      padding: 0 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #070910;
+      border-bottom: 1px solid rgba(255,130,20,.15);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: 900;
+      color: #ff8a18;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #ff8a18;
+    }
+
+    .login {
+      padding: 12px 28px;
+      border-radius: 30px;
+      border: 1px solid #ff8a18;
+      background: transparent;
+      color: white;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 650px;
+      padding: 80px 7%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      overflow: hidden;
+
+      background:
+        radial-gradient(circle at 75% 50%, rgba(255,100,10,.35), transparent 30%),
+        linear-gradient(135deg,#080a12,#15100b);
+    }
+
+    .small {
+      color: #ff8a18;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    h1 {
+      font-size: 65px;
+      line-height: 1.05;
+      margin: 20px 0;
+    }
+
+    h1 span {
+      color: #ff8a18;
+    }
+
+    .hero p {
+      max-width: 520px;
+      color: #c9c9cf;
+      line-height: 1.8;
+    }
+
+    .buttons {
+      margin-top: 35px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .btn {
+      padding: 16px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .primary {
+      background: linear-gradient(90deg,#ff6410,#ff9b1a);
+      color: white;
+    }
+
+    .secondary {
+      border: 1px solid #ff8a18;
+      color: white;
+    }
+
+    /* COIN */
+    .visual {
+      height: 480px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .coin {
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background: radial-gradient(circle,#292a31,#090a0e);
+      border: 10px solid #ff8a18;
+      box-shadow: 0 0 50px rgba(255,120,10,.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ff8a18;
+      font-size: 90px;
+      font-weight: 900;
+      position: absolute;
+      top: 50px;
+      z-index: 3;
+    }
+
+    .platform {
+      width: 330px;
+      height: 160px;
+      border-radius: 25px;
+      background: linear-gradient(145deg,#252832,#0d0e14);
+      border: 2px solid #ff8a18;
+      box-shadow: 0 0 50px rgba(255,100,10,.35);
+      position: absolute;
+      bottom: 80px;
+      transform: perspective(500px) rotateX(45deg);
+    }
+
+    /* ABOUT */
+    .about {
+      background: #fffaf6;
+      color: #20222d;
+      padding: 80px 10%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+    }
+
+    .about h2 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .about .orange {
+      color: #ff7412;
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-size: 12px;
+    }
+
+    .about p {
+      color: #666;
+      line-height: 1.8;
+      margin-top: 15px;
+    }
+
+    /* PURPOSE */
+    .purpose {
+      padding: 85px 6%;
+      text-align: center;
+      background: #0b0c13;
+    }
+
+    .purpose h2 {
+      font-size: 40px;
+      margin: 12px 0;
+    }
+
+    .purpose > p {
+      color: #aaa;
+    }
+
+    .cards {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 18px;
+    }
+
+    .card {
+      text-align: left;
+      padding: 30px 20px;
+      min-height: 200px;
+      border-radius: 18px;
+      background: linear-gradient(145deg,#19171b,#101016);
+      border: 1px solid rgba(255,138,24,.2);
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      border-color: #ff8a18;
+    }
+
+    .icon {
+      font-size: 35px;
+      color: #ff8a18;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #999;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* TOKEN */
+    .token {
+      padding: 80px 8%;
+      background: #fffaf6;
+      color: #20222d;
+      text-align: center;
+    }
+
+    .token h2 {
+      font-size: 40px;
+    }
+
+    .token-box {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 20px;
+      border: 2px solid #ff8a18;
+      background: white;
+      box-shadow: 0 15px 40px rgba(0,0,0,.1);
+    }
+
+    .token-box h3 {
+      color: #ff7412;
+      font-size: 25px;
+      margin-bottom: 20px;
+    }
+
+    .token-box p {
+      margin: 12px;
+      color: #666;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #070910;
+      padding: 60px 8%;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 30px;
+    }
+
+    footer h3 {
+      color: #ff8a18;
+    }
+
+    footer p,
+    footer a {
+      color: #aaa;
+      font-size: 14px;
+      margin-top: 10px;
+      display: block;
+      text-decoration: none;
+    }
+
+    /* MOBILE */
+    @media(max-width:800px) {
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero p {
+        margin: auto;
+      }
+
+      h1 {
+        font-size: 45px;
+      }
+
+      .buttons {
+        justify-content: center;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      footer {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width:500px) {
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .login {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">SAFERA</div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About Us</a>
+    <a href="#token">Token</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#community">Community</a>
+  </nav>
+
+  <button class="login">Login</button>
+
+</header>
+
+
+<section class="hero" id="home">
+
+  <div>
+
+    <div class="small">
+      YOUR GATEWAY TO WEB 3.0
+    </div>
+
+    <h1>
+      Empowering<br>
+      The Digital <span>Future</span>
+    </h1>
+
+    <p>
+      Welcome to SAFERA. Explore the next generation
+      of blockchain technology, digital assets and
+      decentralized innovation.
+    </p>
+
+    <div class="buttons">
+
+      <a href="#token" class="btn primary">
+        → Explore SAFERA
+      </a>
+
+      <a href="#about" class="btn secondary">
+        Learn More
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="visual">
+
+    <div class="coin">
+      S
+    </div>
+
+    <div class="platform"></div>
+
+  </div>
+
+</section>
+
+
+<section class="about" id="about">
+
+  <div>
+
+    <h2>About Us</h2>
+
+    <div class="orange">
+      WELCOME TO SAFERA
+    </div>
+
+    <p>
+      SAFERA is an innovative Web3 platform focused
+      on blockchain technology, digital assets and
+      decentralized innovation.
+    </p>
+
+  </div>
+
+
+  <div>
+
+    <h2>Our Mission</h2>
+
+    <div class="orange">
+      BUILDING THE FUTURE
+    </div>
+
+    <p>
+      Our mission is to make Web3 technology easier
+      to understand and create a modern digital
+      ecosystem for the future.
+    </p>
+
+  </div>
+
+</section>
+
+
+<section class="purpose">
+
+  <div class="small">
+    OUR PURPOSE
+  </div>
+
+  <h2>
+    Unleashing Potential In The Web3 Era
+  </h2>
+
+  <p>
+    Explore blockchain, digital assets and
+    decentralized technologies.
+  </p>
+
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="icon">◈</div>
+      <h3>Blockchain</h3>
+      <p>
+        Discover blockchain technology and
+        decentralized systems.
+      </p>
+    </div>
+
+
+    <div class="card">
+      <div class="icon">◇</div>
+      <h3>Digital Assets</h3>
+      <p>
+        Learn about digital assets and
+        Web3 ecosystems.
+      </p>
+    </div>
+
+
+    <div class="card">
+      <div class="icon">◎</div>
+      <h3>Community</h3>
+      <p>
+        Connect with people exploring
+        the digital future.
+      </p>
+    </div>
+
+
+    <div class="card">
+      <div class="icon">✦</div>
+      <h3>Innovation</h3>
+      <p>
+        Explore new ideas and technologies
+        shaping Web3.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="token" id="token">
+
+  <h2>SAFERA Token</h2>
+
+  <div class="token-box">
+
+    <h3>SAFERA</h3>
+
+    <p>
+      Total Supply: <b>1,000,000,000</b>
+    </p>
+
+    <p>
+      Current Price: —
+    </p>
+
+    <p>
+      Network: To be announced
+    </p>
+
+    <a href="#home" class="btn primary">
+      View Token
+    </a>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <div>
+    <div class="logo">SAFERA</div>
+
+    <p>
+      © 2026 SAFERA. All rights reserved.
+    </p>
+  </div>
+
+  <div>
+    <h3>Company</h3>
+    <a href="#about">About Us</a>
+    <a href="#home">Home</a>
+  </div>
+
+  <div>
+    <h3>Links</h3>
+    <a href="#token">Token</a>
+    <a href="#community">Community</a>
+  </div>
+
+</footer>
+
+</body>
+</html>

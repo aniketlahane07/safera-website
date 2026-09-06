@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Safera - Login</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #fff7ed, #ffd9a8);
+    }
+
+    .login-box {
+      width: 90%;
+      max-width: 400px;
+      background: white;
+      padding: 35px 30px;
+      border-radius: 22px;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 34px;
+      font-weight: bold;
+      color: #f97316;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #777;
+      margin-bottom: 30px;
+    }
+
+    .input-box {
+      margin-bottom: 18px;
+    }
+
+    .input-box label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .input-box input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .input-box input:focus {
+      border-color: #f97316;
+    }
+
+    .password-area {
+      position: relative;
+    }
+
+    .password-area input {
+      padding-right: 65px;
+    }
+
+    .show-btn {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: none;
+      color: #f97316;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .forgot {
+      text-align: right;
+      margin: 5px 0 20px;
+    }
+
+    .forgot a {
+      color: #f97316;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: #f97316;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .login-btn:hover {
+      background: #ea580c;
+    }
+
+    .signup {
+      text-align: center;
+      margin-top: 22px;
+      color: #666;
+    }
+
+    .signup a {
+      color: #f97316;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .home {
+      text-align: center;
+      margin-top: 18px;
+    }
+
+    .home a {
+      color: #555;
+      text-decoration: none;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-box">
+
+    <div class="logo">SAFERA</div>
+
+    <p class="subtitle">Welcome back! Login to continue.</p>
+
+    <form onsubmit="loginUser(event)">
+
+      <div class="input-box">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+      </div>
+
+      <div class="input-box">
+        <label>Password</label>
+
+        <div class="password-area">
+          <input type="password" id="password" placeholder="Enter your password" required>
+          <button type="button" class="show-btn" onclick="togglePassword()">
+            Show
+          </button>
+        </div>
+      </div>
+
+      <div class="forgot">
+        <a href="#">Forgot Password?</a>
+      </div>
+
+      <button type="submit" class="login-btn">
+        Login
+      </button>
+
+    </form>
+
+    <div class="signup">
+      Don't have an account?
+      <a href="signup.html">Create Account</a>
+    </div>
+
+    <div class="home">
+      <a href="index.html">← Back to Home</a>
+    </div>
+
+  </div>
+
+  <script>
+
+    function togglePassword() {
+      const password = document.getElementById("password");
+      const button = document.querySelector(".show-btn");
+
+      if (password.type === "password") {
+        password.type = "text";
+        button.innerText = "Hide";
+      } else {
+        password.type = "password";
+        button.innerText = "Show";
+      }
+    }
+
+    function loginUser(event) {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value;
+
+      alert("Welcome to Safera, " + email + "!");
